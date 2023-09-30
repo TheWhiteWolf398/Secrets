@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended:true
 }));
 
-mongoose.connect("mongodb://0.0.0.0:27017/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://abhishekmukherjee399:Test-123@cluster0.ayowasa.mongodb.net/userDB", {useNewUrlParser: true});
 
 console.log(process.env.API_KEY);
 
@@ -69,8 +69,14 @@ User.findOne({email:username})
       console.log(err);
     })
 });
-    
+
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
      
-app.listen(3000, function(){
-  console.log("Server started on port 3000.");
+app.listen(port, function(){
+  console.log("Server has started successfully.");
 });
